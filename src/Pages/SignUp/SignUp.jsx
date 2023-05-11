@@ -1,9 +1,28 @@
 import { Link } from "react-router-dom";
 import logImage from "../../assets/images/login/login.svg"
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const SignUp = () => {
+
+    const { createUser } = useContext(AuthContext);
+
     const handelSignUp = (event) => {
         event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(name, email, password);
+
+        createUser(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.log(error))
+
+
     }
 
     return (
@@ -16,6 +35,12 @@ const SignUp = () => {
                     <div className="card-body">
                         <h1 className="text-4xl text-center font-bold text-orange-600">SignUp</h1>
                         <form onSubmit={handelSignUp}>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Name</span>
+                                </label>
+                                <input type="name" name="name" placeholder="name" className="input input-bordered" />
+                            </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
@@ -32,10 +57,10 @@ const SignUp = () => {
                                 </label>
                             </div>
                             <div className="form-control mt-6">
-                                <input className="btn btn-primary border-orange-600 bg-orange-600" type="submit" value="Login" />
+                                <input className="btn btn-primary border-orange-600 bg-orange-600" type="submit" value="Sign Up" />
                             </div>
                         </form>
-                        <p className="text-center">Already Have an account <Link to='/login' className="text-orange-600">Sign Up</Link> </p>
+                        <p className="text-center">Already Have an account <Link to='/login' className="text-orange-600">Login</Link> </p>
                     </div>
                 </div>
             </div>
