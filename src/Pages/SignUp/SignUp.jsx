@@ -60,6 +60,7 @@ const SignUp = () => {
                                 <input className="btn btn-primary border-orange-600 bg-orange-600" type="submit" value="Sign Up" />
                             </div>
                         </form>
+                        {/* this is a comment */}
                         <p className="text-center">Already Have an account <Link to='/login' className="text-orange-600">Login</Link> </p>
                     </div>
                 </div>
