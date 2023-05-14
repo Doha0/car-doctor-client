@@ -10,7 +10,9 @@ const Navbar = () => {
 
     const handelLogout = () => {
         logOut()
-            .then(() => { })
+            .then(() => {
+                
+            })
             .catch(error => console.log(error))
     }
 

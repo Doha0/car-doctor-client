@@ -26,7 +26,7 @@ const Checkout = () => {
             price: price
         }
 
-        console.log(booking);
+        // console.log(booking);
 
         fetch('http://localhost:5000/bookings', {
             method: "POST",
@@ -37,7 +37,7 @@ const Checkout = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 if (data.insertedId) {
                     alert('Service booked success');
                 }
@@ -55,25 +55,25 @@ const Checkout = () => {
                         <label className="label">
                             <span className="label-text">Name</span>
                         </label>
-                        <input type="text" name="name" defaultValue={user?.displayName} className="input input-bordered" />
+                        <input type="text" name="name" defaultValue={user?.displayName} className="input input-bordered" required />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Date</span>
                         </label>
-                        <input type="date" name="date" className="input input-bordered" />
+                        <input type="date" name="date" className="input input-bordered" required />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Email</span>
                         </label>
-                        <input type="text" name="email" defaultValue={user?.email} className="input input-bordered" />
+                        <input type="email" name="email" defaultValue={user?.email} className="input input-bordered" required />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Due Amount</span>
                         </label>
-                        <input type="text" name="price" defaultValue={'$' + price} className="input input-bordered" />
+                        <input type="text" name="price" defaultValue={'$' + price} className="input input-bordered" required />
                     </div>
 
                 </div>
